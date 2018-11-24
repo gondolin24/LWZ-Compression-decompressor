@@ -1,1 +1,0 @@
-LZW Compresison and decompressor.
