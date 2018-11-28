@@ -46,8 +46,17 @@ public class Compressor {
         return encodedString[0];
     }
 
-    private String getEncoded(String current) {
-        return keyTable.entrySet().stream().findFirst().filter(entry -> entry.getValue().equals("a")).map(Entry::getKey).get();
+      private String getEncoded(String current) {
+
+        //iterative way ... probably better and cleaner..
+        //to all the stream haters : @kisunji
+        for(Entry<String,String> entrySet:keyTable.entrySet()){
+            if(current.equals(entrySet.getValue()))
+                return entrySet.getKey();
+        }
+        return "";
+        //Java 8 stream version
+       // return  keyTable.entrySet().stream().findFirst().filter(entry -> entry.getValue().equals(current)).map(Entry::getKey).orElse("");
     }
 
 
